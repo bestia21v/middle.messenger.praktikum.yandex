@@ -19,12 +19,10 @@
   },
   "homepage": "https://github.com/bestia21v/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
     "@parcel/transformer-inline-string": "2.4.1",
     "@parcel/transformer-sass": "2.4.1",
     "express": "4.17.3",
     "handlebars": "4.7.7",
-    "parcel": "2.4.1",
-    "parcel-transformer-hbs": "1.0.4"
+    "parcel": "2.4.1"
   }
 }

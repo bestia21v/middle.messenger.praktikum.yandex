@@ -1,7 +1,9 @@
-import button from './button.hbs'
+import button from 'bundle-text:./button.hbs';
+import Handlebars from 'handlebars';
+import './button.scss'
 
-const templateData = button({
-    buttonText: 'button text'
+const templateData = Handlebars.compile(button)({
+    buttonText: 'button text123'
 });
 
 export default templateData;
