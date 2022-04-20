@@ -1,5 +1,3 @@
-export function hello() {
-    console.log('Hello console');
-}
+import button from './components/button';
 
-hello();
+document.getElementById('root').innerHTML = button;
