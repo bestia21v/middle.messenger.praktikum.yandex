@@ -1,13 +1,7 @@
-import button from './button.hbs';
-import Handlebars from 'handlebars';
+import button from './button.hbs'
 
-const template = Handlebars.compile(button);
-
-const templateData = template({
-    buttonText: 'Button text'
+const templateData = button({
+    buttonText: 'button text'
 });
-
-console.log(template);
-console.log(templateData);
 
 export default templateData;
