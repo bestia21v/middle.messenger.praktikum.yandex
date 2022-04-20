@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,10 @@
   },
   "homepage": "https://github.com/bestia21v/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars": "1.0.4",
     "parcel": "2.4.1"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
   }
 }
