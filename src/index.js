@@ -1,4 +1,10 @@
 import './main.scss';
+
+//Импорт всех partial
+import './../src/components/subTitle';
+import './../src/components/title';
+
+//Импорт всех pages
 import page404Template from './pages/404'
 import page5xxTemplate from './pages/5xx'
 
