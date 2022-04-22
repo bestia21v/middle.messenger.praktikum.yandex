@@ -1,12 +1,12 @@
 import Handlebars from 'handlebars';
 import page from 'bundle-text:./change-avatar.hbs';
-import './change-avatar.scss'
 
 const data = {
+    src: '/static/no-image.jpg',
+    customClass: 'image--rounded',
     subTitle: 'Изменить аватар',
-    save: {
-        text: 'Сохранить',
-        isPrimary: true
+    submit: {
+        text: 'Сохранить'
     },
     fields: [
         {type: "file", name: "avatar", text: "Выберите файл" }

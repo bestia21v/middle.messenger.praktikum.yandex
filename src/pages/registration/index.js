@@ -1,15 +1,13 @@
 import Handlebars from 'handlebars';
 import page from 'bundle-text:./registration.hbs';
-import './registration.scss'
 
 const data = {
     login: {
         text: 'Войти',
         href: '/login'
     },
-    registration: {
-        text: 'Регистрация',
-        isPrimary: true
+    submit: {
+        text: 'Регистрация'
     },
     fields: [
         {type: "text", name: "first_name", text: "Имя"},

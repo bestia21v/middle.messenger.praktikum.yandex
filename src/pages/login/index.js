@@ -1,11 +1,9 @@
 import Handlebars from 'handlebars';
 import page from 'bundle-text:./login.hbs';
-import './login.scss';
 
 const data = {
-    login: {
-        text: 'Войти',
-        isPrimary: true
+    submit: {
+        text: 'Войти'
     },
     registration: {
         text: 'Регистрация',

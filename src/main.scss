@@ -1,6 +1,8 @@
+@import './variables.scss';
+
 body {
   box-sizing: border-box;
-  font-family: Helvetica, sans-serif;
+  font-family: $font-stack;
 }
 
 .container {
@@ -11,11 +13,9 @@ body {
 .overlay {
   padding: 20px;
   margin: 0 auto;
-  border: 1px solid #6667AB;
-  border-radius: 4px;
-}
-
-.form {
+  border: $border;
+  border-radius: $border-radius;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;

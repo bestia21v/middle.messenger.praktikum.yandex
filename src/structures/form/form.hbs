@@ -1,0 +1,8 @@
+<form class="form">
+    {{#each fields}}
+        {{>field}}
+    {{/each}}
+    {{#if submit}}
+        {{>button submit}}
+    {{/if}}
+</form>

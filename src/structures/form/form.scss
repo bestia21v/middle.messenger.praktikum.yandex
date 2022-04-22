@@ -1,4 +1,7 @@
 .form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   &__form-field {
     display: flex;
     flex-direction: column;

@@ -1,12 +1,10 @@
 import Handlebars from 'handlebars';
 import page from 'bundle-text:./change-data.hbs';
-import './change-data.scss'
 
 const data = {
     subTitle: 'Изменить данные',
-    save: {
-        text: 'Сохранить',
-        isPrimary: true
+    submit: {
+        text: 'Сохранить'
     },
     fields: [
         {type: "text", name: "first_name", text: "Имя", value: "Иван", },

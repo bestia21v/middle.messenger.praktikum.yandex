@@ -1,25 +1,15 @@
 import Handlebars from 'handlebars';
 import page from 'bundle-text:./profile.hbs';
-import './profile.scss'
 
 const data = {
-    changeAvatar: {
-        text: 'Сменить аватар',
-        href: '/change-avatar'
-    },
-    changeData: {
-        text: 'Сменить данные',
-        href: '/change-data'
-    },
-    changePassword: {
-        text: 'Сменить пароль',
-        href: '/change-password'
-    },
-    logout: {
-        text: 'Выйти',
-        href: '/login',
-        customClass: 'link--error'
-    },
+    src: '/static/no-image.jpg',
+    customClass: 'image--rounded',
+    links: [
+        {text: 'Сменить аватар', href: '/change-avatar', customClass: 'link--left'},
+        {text: 'Сменить данные', href: '/change-data', customClass: 'link--left'},
+        {text: 'Сменить пароль', href: '/change-password', customClass: 'link--left'},
+        {text: 'Выйти', href: '/login', customClass: 'link--error link--left'}
+    ],
     fields: [
         {type: "text", name: "first_name", text: "Имя", value: "Иван", isDisabled: true},
         {type: "text", name: "second_name", text: "Фамилия", value: "Иванов", isDisabled: true},

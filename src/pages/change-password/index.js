@@ -1,12 +1,10 @@
 import Handlebars from 'handlebars';
 import page from 'bundle-text:./change-password.hbs';
-import './change-password.scss'
 
 const data = {
     subTitle: 'Изменить пароль',
-    save: {
-        text: 'Сохранить',
-        isPrimary: true
+    submit: {
+        text: 'Сохранить'
     },
     fields: [
         {type: "password", name: "oldPassword", text: "Старый пароль" },
