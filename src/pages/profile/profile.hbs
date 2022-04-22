@@ -1,0 +1,16 @@
+<div class="profile">
+    <div class="overlay">
+        {{>no-image}}
+        <form class="form profile__form">
+            {{#each fields}}
+                {{>field}}
+            {{/each}}
+        </form>
+        <div class="profile__actions">
+            {{>link changePassword}}
+            {{>link changeAvatar}}
+            {{>link changeData}}
+            {{>link logout}}
+        </div>
+    </div>
+</div>

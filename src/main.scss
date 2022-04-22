@@ -7,3 +7,16 @@ body {
   width: 1200px;
   margin: 0 auto;
 }
+
+.overlay {
+  padding: 20px;
+  margin: 0 auto;
+  border: 1px solid #6667AB;
+  border-radius: 4px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

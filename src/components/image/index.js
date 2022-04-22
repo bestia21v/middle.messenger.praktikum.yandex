@@ -1,7 +1,5 @@
 import image from 'bundle-text:./image.hbs';
 import Handlebars from 'handlebars';
-import './image.scss'
+import './image.scss';
 
-const componentFunc = Handlebars.compile(image);
-
-export default componentFunc;
+Handlebars.registerPartial('image', image);

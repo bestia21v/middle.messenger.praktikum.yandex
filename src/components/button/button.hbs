@@ -1,1 +1,5 @@
-<button class="button">{{text}}</button>
+{{#if isPrimary}}
+    <button class="button">{{text}}</button>
+{{else}}
+    <button class="button button--secondary">{{text}}</button>
+{{/if}}

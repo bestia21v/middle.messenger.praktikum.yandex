@@ -1,0 +1,12 @@
+<div class="change-password">
+    <div class="overlay">
+        {{>subTitle}}
+        {{>no-image}}
+        <form class="form change-password__form">
+            {{#each fields}}
+                {{>field}}
+            {{/each}}
+            {{>button save}}
+        </form>
+    </div>
+</div>
