@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
+    "check": "tsc --noEmit",
     "start": "npm install && parcel build index.html && node server.js"
   },
   "repository": {
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@parcel/transformer-inline-string": "^2.4.1",
     "@parcel/transformer-sass": "^2.4.1",
+    "@parcel/transformer-typescript-tsc": "^2.5.0",
     "express": "^4.17.3",
     "handlebars": "^4.7.7",
     "parcel": "^2.4.1",

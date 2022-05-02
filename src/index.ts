@@ -4,4 +4,8 @@ import {getTemplate} from "./helpers";
 
 const template = getTemplate();
 
-document.getElementById('root').innerHTML = template;
+const root = document.getElementById('root');
+
+if (root) {
+    root.innerHTML = template;
+}

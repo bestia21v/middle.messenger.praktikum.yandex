@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import * as Handlebars from 'handlebars';
 import page from 'bundle-text:./change-avatar.hbs';
 
 const data = {

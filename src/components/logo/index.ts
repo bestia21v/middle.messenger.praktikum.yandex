@@ -1,5 +1,5 @@
 import logo from 'bundle-text:./logo.hbs';
-import Handlebars from 'handlebars';
+import * as Handlebars from 'handlebars';
 import './logo.scss'
 
 const src = '/static/logo.jpg';

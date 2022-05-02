@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import * as Handlebars from 'handlebars';
 import page from 'bundle-text:./5xx.hbs';
 
 const title = '5XX что-то пошло не так';
