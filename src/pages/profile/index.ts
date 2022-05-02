@@ -3,7 +3,6 @@ import page from 'bundle-text:./profile.hbs';
 
 const data = {
     src: '/static/no-image.jpg',
-    customClass: 'image--rounded',
     links: [
         {text: 'Сменить аватар', href: '/change-avatar', customClass: 'link--left'},
         {text: 'Сменить данные', href: '/change-data', customClass: 'link--left'},

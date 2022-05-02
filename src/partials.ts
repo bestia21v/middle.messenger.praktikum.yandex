@@ -11,3 +11,4 @@ import './components/avatar';
 import  './structures/form';
 import  './structures/chat/sidebar';
 import  './structures/chat/content';
+import  './structures/chat/sidebar/message';

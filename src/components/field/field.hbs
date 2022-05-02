@@ -1,7 +1,7 @@
-<div class="form__form-field">
-    <span class="form__form-field-label">{{text}}</span>
+<div class="form__form-field {{customClass}}">
+    {{#if text}}<span class="form__form-field-label">{{text}}</span>{{/if}}
     <input
-        class="form__form-field-input"
+        class="form__form-field-input {{inputCustomClass}}"
         {{#if isDisabled}}disabled{{/if}}
         {{#if value}}value="{{value}}"{{/if}}
         type="{{type}}"
