@@ -8,4 +8,6 @@ import './components/logo';
 import './components/link';
 import './components/avatar';
 
-import  './../src/structures/form';
+import  './structures/form';
+import  './structures/chat/sidebar';
+import  './structures/chat/content';
