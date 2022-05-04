@@ -9,13 +9,13 @@ import pageChangePasswordTemplate from './change-password';
 import pageChangeAvatarTemplate from './change-avatar';
 
 export {
-    page404Template,
-    page5xxTemplate,
-    pageChatTemplate,
-    pageLoginTemplate,
-    pageRegistrationTemplate,
-    pageProfileTemplate,
-    pageChangeDataTemplate,
-    pageChangePasswordTemplate,
-    pageChangeAvatarTemplate,
-}
+  page404Template,
+  page5xxTemplate,
+  pageChatTemplate,
+  pageLoginTemplate,
+  pageRegistrationTemplate,
+  pageProfileTemplate,
+  pageChangeDataTemplate,
+  pageChangePasswordTemplate,
+  pageChangeAvatarTemplate,
+};
