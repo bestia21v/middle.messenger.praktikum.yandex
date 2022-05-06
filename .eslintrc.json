@@ -1,9 +1,20 @@
 {
-  "extends": "airbnb-base",
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
-    "no-console": "off",
+    "no-console": 0,
+    "no-unused-vars": 0,
     "import/prefer-default-export": 0,
-    "import/extensions": 0
+    "import/extensions": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
   },
   "parserOptions": {
     "ecmaVersion": "latest",

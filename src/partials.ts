@@ -1,4 +1,4 @@
-//Импорт всех partials
+// Импорт всех partials
 import './components/sub-title';
 import './components/title';
 import './components/field';
@@ -8,7 +8,7 @@ import './components/logo';
 import './components/link';
 import './components/avatar';
 
-import  './structures/form';
-import  './structures/chat/sidebar';
-import  './structures/chat/content';
-import  './structures/chat/sidebar/message';
+import './structures/form';
+import './structures/chat/sidebar';
+import './structures/chat/content';
+import './structures/chat/sidebar/message';
