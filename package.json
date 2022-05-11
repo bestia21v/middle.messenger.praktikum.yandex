@@ -6,7 +6,7 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html",
     "check": "tsc --noEmit",
-    "eslint": "eslint **/*.ts --fix",
+    "eslint": "eslint src --ext .js,.ts, --fix",
     "stylelint": "stylelint **/*.scss",
     "start": "npm install && parcel build index.html && node server.js"
   },
@@ -25,12 +25,12 @@
     "@parcel/transformer-inline-string": "^2.4.1",
     "@parcel/transformer-sass": "^2.4.1",
     "@parcel/transformer-typescript-tsc": "^2.5.0",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "handlebars": "^4.7.7",
     "parcel": "^2.4.1",
     "parcel-reporter-static-files-copy": "^1.3.4",
     "stylelint": "^14.8.2",
@@ -40,7 +40,9 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "handlebars": "^4.7.7",
+    "uuid": "^8.3.2"
   },
   "staticFiles": {
     "distDir": "dist/static"

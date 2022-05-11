@@ -1,46 +1,47 @@
-enum EventsEnum {
-  click = 'click'
+import { EVENTS } from './block';
+
+export interface IEventBus {
+  on: (event: EVENTS, callback: any) => void;
+  off: (event: EVENTS, callback: any) => void;
+  emit: (event: EVENTS, ...args: any) => void;
 }
 
-interface IEventBus {
-  on: (event: EventsEnum, callback: any) => void;
-  off: (event: EventsEnum, callback: any) => void;
-  emit: (event: EventsEnum, ...args: any) => void;
-}
+type CallbackType = (...args: any) => void;
+type ListenersType = {
+  [key in EVENTS]?: CallbackType[]
+};
 
-class EventBus implements IEventBus {
-  listeners: {
-    [key in EventsEnum]?: any[]
-  };
+export class EventBus implements IEventBus {
+  listeners: ListenersType;
 
   constructor() {
     this.listeners = {};
   }
 
-  on(event: EventsEnum, callback: any) {
+  on(event: EVENTS, callback: CallbackType) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
 
-    (this.listeners[event] as any[]).push(callback);
+    this.listeners[event]?.push(callback);
   }
 
-  off(event: EventsEnum, callback: any) {
+  off(event: EVENTS, callback: CallbackType) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = (this.listeners[event] as any[]).filter(
-      (listener: any) => listener !== callback,
+    this.listeners[event] = this.listeners[event]?.filter(
+      (listener: CallbackType) => listener !== callback,
     );
   }
 
-  emit(event: EventsEnum, ...args: any) {
+  emit(event: EVENTS, ...args: any) {
     if (!this.listeners[event]) {
       throw new Event(`Нет события: ${event}`);
     }
 
-    (this.listeners[event] as any[]).forEach((listener: any) => {
+    this.listeners[event]?.forEach((listener: CallbackType) => {
       listener(...args);
     });
   }

@@ -1,11 +1,8 @@
 import './main.scss';
 import './partials';
-import { getTemplate } from './helpers';
+import { getPage } from './helpers';
+import { render } from './utils/renderDOM';
 
-const template = getTemplate();
+const page = getPage();
 
-const root = document.getElementById('root');
-
-if (root) {
-  root.innerHTML = template;
-}
+render('#root', page);

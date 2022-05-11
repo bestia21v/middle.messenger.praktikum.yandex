@@ -1,38 +1,36 @@
+// Простой роутинг
 import {
-  page404Template,
-  page5xxTemplate,
-  pageChangeAvatarTemplate,
-  pageChangeDataTemplate,
-  pageChangePasswordTemplate,
-  pageChatTemplate,
-  pageLoginTemplate,
-  pageProfileTemplate,
-  pageRegistrationTemplate,
+  changeAvatarPage,
+  changeDataPage,
+  changePasswordPage,
+  loginPage,
+  registrationPage,
+  serverErrorPage,
+  notFoundPage,
 } from '../pages';
 
-// Простой роутинг
-export function getTemplate() {
+export function getPage() {
   const { pathname } = window.location;
 
   switch (pathname) {
     case '/':
     case '/login':
-      return pageLoginTemplate;
+      return loginPage;
     case '/registration':
-      return pageRegistrationTemplate;
-    case '/profile':
-      return pageProfileTemplate;
-    case '/chat':
-      return pageChatTemplate;
+      return registrationPage;
+    // case '/profile':
+    //   return profilePage;
+    // case '/chat':
+    //   return pageChatTemplate;
     case '/5xx':
-      return page5xxTemplate;
+      return serverErrorPage;
     case '/change-data':
-      return pageChangeDataTemplate;
+      return changeDataPage;
     case '/change-password':
-      return pageChangePasswordTemplate;
+      return changePasswordPage;
     case '/change-avatar':
-      return pageChangeAvatarTemplate;
+      return changeAvatarPage;
     default:
-      return page404Template;
+      return notFoundPage;
   }
 }
