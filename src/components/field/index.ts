@@ -1,4 +1,3 @@
-import field from 'bundle-text:./field.hbs';
-import * as Handlebars from 'handlebars';
+import Field from './field';
 
-Handlebars.registerPartial('field', field);
+export { Field };

@@ -1,5 +1,3 @@
-import * as Handlebars from 'handlebars';
-import content from 'bundle-text:./content.hbs';
-import './content.scss';
+import { Content } from './content';
 
-Handlebars.registerPartial('content', content);
+export { Content };

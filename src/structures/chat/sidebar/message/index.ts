@@ -1,5 +1,3 @@
-import * as Handlebars from 'handlebars';
-import message from 'bundle-text:./message.hbs';
-import './message.scss';
+import { Message } from './message';
 
-Handlebars.registerPartial('message', message);
+export { Message };

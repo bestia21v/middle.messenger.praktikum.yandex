@@ -1,5 +1,3 @@
-import form from 'bundle-text:./form.hbs';
-import * as Handlebars from 'handlebars';
-import './form.scss';
+import { Form } from './form';
 
-Handlebars.registerPartial('form', form);
+export { Form };

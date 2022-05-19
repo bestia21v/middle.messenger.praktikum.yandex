@@ -1,8 +1,4 @@
-<div class="sidebar">
-    {{>title title='Лента чатов' customClass='sidebar__title'}}
-    <div class="sidebar__messages">
-        {{#each messages}}
-            {{>message}}
-        {{/each}}
-    </div>
+<div class="sidebar__title">{{title}}</div>
+<div class="sidebar__messages">
+    {{{messages}}}
 </div>

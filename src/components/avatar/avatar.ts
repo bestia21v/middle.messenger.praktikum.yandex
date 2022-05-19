@@ -1,16 +1,12 @@
 import avatar from 'bundle-text:./avatar.hbs';
-import Block from '../../block';
+import { Block } from '../../abstract/block';
+import './avatar.scss';
 
-interface Props {
+export interface AvatarProps {
     src: string;
-    customClass?: string;
 }
 
-export default class Avatar extends Block {
-  constructor(props: Props) {
-    super('div', props);
-  }
-
+export default class Avatar extends Block<AvatarProps> {
   render() {
     return this.compile(avatar, this.props);
   }

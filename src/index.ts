@@ -1,7 +1,7 @@
 import './main.scss';
-import './partials';
-import { getPage } from './helpers';
+import './partials/partials';
 import { render } from './utils/renderDOM';
+import { getPage } from './utils/simpleRouter';
 
 const page = getPage();
 

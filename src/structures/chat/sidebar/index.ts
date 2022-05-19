@@ -1,5 +1,3 @@
-import * as Handlebars from 'handlebars';
-import sidebar from 'bundle-text:./sidebar.hbs';
-import './sidebar.scss';
+import { Sidebar } from './sidebar';
 
-Handlebars.registerPartial('sidebar', sidebar);
+export { Sidebar };

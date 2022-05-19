@@ -1,5 +1,3 @@
-import subTitle from 'bundle-text:./sub-title.hbs';
-import * as Handlebars from 'handlebars';
-import './sub-title.scss';
+import { SubTitle } from './sub-title';
 
-Handlebars.registerPartial('subTitle', subTitle);
+export { SubTitle };

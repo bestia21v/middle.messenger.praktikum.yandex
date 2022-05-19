@@ -1,16 +1,13 @@
 import title from 'bundle-text:./title.hbs';
-import Block from '../../block';
+import { Block } from '../../abstract/block';
+import './title.scss';
 
-interface Props {
+export interface TitleProps {
     title: string;
     customClass?: string;
 }
 
-export default class Title extends Block {
-  constructor(props: Props) {
-    super('div', props);
-  }
-
+export class Title extends Block<TitleProps> {
   render() {
     return this.compile(title, this.props);
   }

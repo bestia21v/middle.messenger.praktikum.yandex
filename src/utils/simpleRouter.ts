@@ -7,6 +7,8 @@ import {
   registrationPage,
   serverErrorPage,
   notFoundPage,
+  profilePage,
+  chatPage,
 } from '../pages';
 
 export function getPage() {
@@ -18,10 +20,10 @@ export function getPage() {
       return loginPage;
     case '/registration':
       return registrationPage;
-    // case '/profile':
-    //   return profilePage;
-    // case '/chat':
-    //   return pageChatTemplate;
+    case '/profile':
+      return profilePage;
+    case '/chat':
+      return chatPage;
     case '/5xx':
       return serverErrorPage;
     case '/change-data':

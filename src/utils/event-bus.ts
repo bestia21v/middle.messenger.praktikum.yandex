@@ -1,4 +1,4 @@
-import { EVENTS } from './block';
+import { EVENTS } from '../abstract/block/block';
 
 export interface IEventBus {
   on: (event: EVENTS, callback: any) => void;

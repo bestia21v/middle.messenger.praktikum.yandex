@@ -1,5 +1,3 @@
-import avatar from 'bundle-text:./avatar.hbs';
-import * as Handlebars from 'handlebars';
-import './avatar.scss';
+import Avatar from './avatar';
 
-Handlebars.registerPartial('avatar', avatar);
+export { Avatar };

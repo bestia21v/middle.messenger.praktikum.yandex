@@ -1,5 +1,3 @@
-import button from 'bundle-text:./button.hbs';
-import * as Handlebars from 'handlebars';
-import './button.scss';
+import { Button } from './button';
 
-Handlebars.registerPartial('button', button);
+export { Button };

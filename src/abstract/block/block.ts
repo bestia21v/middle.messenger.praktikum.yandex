@@ -1,6 +1,6 @@
 import { v4 as makeUUID } from 'uuid';
 import * as Handlebars from 'handlebars';
-import { EventBus } from './event-bus';
+import { EventBus } from '../../utils/event-bus';
 
 export enum EVENTS {
     INIT = 'init',
@@ -8,35 +8,36 @@ export enum EVENTS {
     FLOW_CDU = 'flow:component-did-update',
     FLOW_RENDER = 'flow:render'
 }
+export type eventsType = {events?: any};
+export type attributesType = {attributes?: {[key: string]: any}};
+type propsExtended<T> = T & eventsType & attributesType;
 
 // Нельзя создавать экземпляр данного класса
-class Block {
+export class Block<T extends {[key: string]: any}> {
   _element: HTMLElement | null = null;
 
   _tagName: string;
 
-  props: any;
+  props: propsExtended<T>;
 
   children: any;
 
   __id: string;
 
-  customClass: string;
-
   eventBus: () => EventBus;
 
-  constructor(tagName = 'div', propsAndChildren = {}, customClass = '') {
+  constructor(propsAndChildren: propsExtended<T>, tagName = 'div') {
     const eventBus = new EventBus();
 
     this._tagName = tagName;
-    this.customClass = customClass;
 
     this.__id = makeUUID();
 
     const { children, props } = this._getChildren(propsAndChildren);
 
-    this.children = children;
+    this.children = this._makeChildrenProxy(children);
     this.props = this._makePropsProxy({ ...props, __id: this.__id });
+
     this.eventBus = () => eventBus;
     this._registerEvents(this.eventBus());
     this.eventBus().emit(EVENTS.INIT);
@@ -47,7 +48,13 @@ class Block {
     const props: any = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
-      if (value instanceof Block) {
+      const isValueBlockInstance = value instanceof Block;
+      const isValueArrayOfBlockInstances = Array.isArray(value)
+          && value.every((v) => v instanceof Block) && value.length > 0;
+
+      const isBlockInstance = isValueBlockInstance || isValueArrayOfBlockInstances;
+
+      if (isBlockInstance) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -60,8 +67,14 @@ class Block {
   compile(template: string, props: any) {
     const propsAndStubs = { ...props };
 
+    const id = makeUUID();
+
     Object.entries(this.children).forEach(([key, child]: [string, any]) => {
-      propsAndStubs[key] = `<div data-id="${child.__id}"></div>`;
+      if (Array.isArray(child)) {
+        propsAndStubs[key] = `<div data-id="${id}"></div>`;
+      } else {
+        propsAndStubs[key] = `<div data-id="${child.__id}"></div>`;
+      }
     });
 
     const fragment = document.createElement('template');
@@ -69,10 +82,19 @@ class Block {
     fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
 
     Object.values(this.children).forEach((child: any) => {
-      const stub = fragment.content.querySelector(`[data-id="${child.__id}"]`);
+      if (Array.isArray(child)) {
+        const stub = fragment.content.querySelector(`[data-id="${id}"]`);
 
-      if (stub) {
-        stub.replaceWith(child.getContent());
+        if (stub) {
+          const allContent = child.map((c) => c.getContent() as HTMLElement);
+          stub.replaceWith(...allContent);
+        }
+      } else {
+        const stub = fragment.content.querySelector(`[data-id="${child.__id}"]`);
+
+        if (stub) {
+          stub.replaceWith(child.getContent());
+        }
       }
     });
 
@@ -87,9 +109,7 @@ class Block {
   }
 
   _createResources() {
-    if (this._tagName) {
-      this._element = this._createDocumentElement(this._tagName, this.customClass);
-    }
+    this._element = this._createDocumentElement();
   }
 
   init() {
@@ -119,7 +139,7 @@ class Block {
 
   componentDidUpdate(oldProps: any, newProps: any) {
     // Подумать про сравнение функций
-    return JSON.stringify(oldProps) === JSON.stringify(newProps);
+    return JSON.stringify(oldProps) !== JSON.stringify(newProps);
   }
 
   setProps = (nextProps: any) => {
@@ -137,8 +157,8 @@ class Block {
   _render() {
     const block = this.render();
 
-    this._removeEvents();
     if (this._element) {
+      this._removeEvents();
       this._element.innerHTML = '';
 
       if (block) {
@@ -179,9 +199,28 @@ class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: {
-    [key: string]: number | string | boolean | null | ((...args: any) => void)
-  }) {
+  _makeChildrenProxy(children: any) {
+    return new Proxy(children, {
+      get: (target, child) => {
+        const value = target[child.toString()];
+        return typeof value === 'function' ? value.bind(target) : value;
+      },
+      set: (target, child, value) => {
+        // eslint-disable-next-line no-param-reassign
+        target[child.toString()] = value;
+        this.eventBus().emit(EVENTS.FLOW_CDU, { ...target }, target);
+
+        return true;
+      },
+      deleteProperty: (target, child) => {
+        // eslint-disable-next-line no-param-reassign
+        delete target[child.toString()];
+        return true;
+      },
+    });
+  }
+
+  _makePropsProxy(props: propsExtended<T>) {
     const checkPrivate = (prop: string | symbol): boolean => prop.toString().indexOf('_') === 0;
     return new Proxy(props, {
       get: (target, prop) => {
@@ -189,13 +228,14 @@ class Block {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set: (target, prop, value) => {
+        const targetCopy = { ...target };
         if (checkPrivate(prop)) {
           throw new Error('Нет доступа');
         }
 
         // eslint-disable-next-line no-param-reassign
-        target[prop.toString()] = value;
-        this.eventBus().emit(EVENTS.FLOW_CDU, { ...target }, target);
+        target[prop.toString() as keyof propsExtended<T>] = value;
+        this.eventBus().emit(EVENTS.FLOW_CDU, targetCopy, { ...target });
 
         return true;
       },
@@ -210,26 +250,28 @@ class Block {
     });
   }
 
-  _createDocumentElement(tagName: string, customClass: string) {
-    const element = document.createElement(tagName);
+  _createDocumentElement() {
+    const element = document.createElement(this._tagName);
     element.setAttribute('data-id', this.__id);
-    if (customClass) {
-      element.classList.add(customClass);
-    }
+
+    const { attributes = {} } = this.props;
+
+    Object.entries(attributes).forEach(([attribute, value]) => {
+      element.setAttribute(attribute, value);
+    });
+
     return element;
   }
 
-  // show() {
-  //   if (this._element) {
-  //     this._element.style.display = 'block';
-  //   }
-  // }
-  //
-  // hide() {
-  //   if (this._element) {
-  //     this._element.style.display = 'none';
-  //   }
-  // }
-}
+  show() {
+    if (this._element) {
+      this._element.style.display = 'block';
+    }
+  }
 
-export default Block;
+  hide() {
+    if (this._element) {
+      this._element.style.display = 'none';
+    }
+  }
+}

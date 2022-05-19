@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../variables';
 .form {
   display: flex;
   flex-direction: column;
@@ -21,6 +21,9 @@
     border: $border;
     &--horizontal {
       width: 100%;
+    }
+    &--error {
+      border: 1px $error-color solid;
     }
   }
 }

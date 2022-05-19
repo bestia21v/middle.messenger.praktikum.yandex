@@ -1,16 +1,13 @@
 import subTitle from 'bundle-text:./sub-title.hbs';
-import Block from '../../block';
+import { Block } from '../../abstract/block';
+import './sub-title.scss';
 
-interface Props {
+export interface SubTitleProps {
     subTitle: string;
     customClass?: string;
 }
 
-export default class SubTitle extends Block {
-  constructor(props: Props) {
-    super('div', props);
-  }
-
+export class SubTitle extends Block<SubTitleProps> {
   render() {
     return this.compile(subTitle, this.props);
   }

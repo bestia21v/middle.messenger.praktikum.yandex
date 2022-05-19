@@ -1,5 +1,3 @@
-import title from 'bundle-text:./title.hbs';
-import * as Handlebars from 'handlebars';
-import './title.scss';
+import { Title } from './title';
 
-Handlebars.registerPartial('title', title);
+export { Title };

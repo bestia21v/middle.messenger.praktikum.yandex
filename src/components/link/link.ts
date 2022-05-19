@@ -1,15 +1,15 @@
 import link from 'bundle-text:./link.hbs';
-import Block from '../../block';
+import { Block } from '../../abstract/block';
+import './link.scss';
+import { attributesType, eventsType } from '../../abstract/block/block';
 
-interface Props {
+export interface LinkProps {
   text: string;
-  href: string;
-  customClass?: string;
 }
 
-export class Link extends Block {
-  constructor(props: Props) {
-    super('div', props, 'text-center');
+export class Link extends Block<LinkProps & eventsType & attributesType> {
+  constructor(props: LinkProps & eventsType & attributesType) {
+    super(props, 'a');
   }
 
   render() {

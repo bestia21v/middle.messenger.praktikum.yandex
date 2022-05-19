@@ -1,14 +1,15 @@
 import button from 'bundle-text:./button.hbs';
-import * as Handlebars from 'handlebars';
-import Block from '../../block';
+import { Block } from '../../abstract/block';
+import './button.scss';
+import { attributesType, eventsType } from '../../abstract/block/block';
 
-interface Props {
+export interface ButtonProps {
   text: string;
 }
 
-export default class Button extends Block {
-  constructor(props: Props) {
-    super('div', props);
+export class Button extends Block<ButtonProps & eventsType & attributesType> {
+  constructor(props: ButtonProps & eventsType & attributesType) {
+    super(props, 'button');
   }
 
   render() {
