@@ -1,0 +1,29 @@
+@import '../../variables';
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &--horizontal {
+    flex-direction: row;
+    width: 100%;
+  }
+  &__form-field {
+    display: flex;
+    flex-direction: column;
+    &--horizontal {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+  &__form-field-input {
+    padding: 10px;
+    border-radius: 4px;
+    border: $border;
+    &--horizontal {
+      width: 100%;
+    }
+    &--error {
+      border: 1px $error-color solid;
+    }
+  }
+}
