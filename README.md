@@ -32,7 +32,9 @@ $ npm run start
 Соберет все файлы в папку /dist и запустит express с раздачей статических файлов на 3000 порту
 
 ## Ссылка на PR
-[PULL REQUEST](https://github.com/bestia21v/middle.messenger.praktikum.yandex/pull/1)
+[PULL REQUEST #1](https://github.com/bestia21v/middle.messenger.praktikum.yandex/pull/1)
+
+[PULL REQUEST #2](https://github.com/bestia21v/middle.messenger.praktikum.yandex/pull/2)
 
 ## Ссылка на Netlify
 [NETLIFY](https://stately-zuccutto-6139b6.netlify.app/)
