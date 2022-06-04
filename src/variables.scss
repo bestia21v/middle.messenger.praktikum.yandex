@@ -7,3 +7,6 @@ $font-stack: Helvetica, sans-serif;
 
 $border-radius: 4px;
 $border: 1px solid $primary-color;
+
+$primary-color-light-20: lighten($primary-color, 20%);
+$primary-color-light-30: lighten($primary-color, 30%);

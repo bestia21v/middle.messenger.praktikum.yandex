@@ -1,0 +1,14 @@
+@import '../../../variables';
+.sidebar {
+  height: calc(100vh - 80px);
+  width: 25%;
+  border-right: $border;
+  overflow-y: scroll;
+  &__title {
+    padding-left: 10px;
+    height: 75px;
+    border-bottom: $border;
+    display: flex;
+    align-items: center;
+  }
+}
