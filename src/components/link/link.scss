@@ -1,0 +1,12 @@
+@import './../../variables.scss';
+
+.link {
+  color: $primary-color;
+  text-align: center;
+  &--error {
+    color: $error-color;
+  }
+  &--left {
+    text-align: left;
+  }
+}

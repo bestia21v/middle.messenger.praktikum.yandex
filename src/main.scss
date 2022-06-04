@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+body {
+  box-sizing: border-box;
+  font-family: $font-stack;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.overlay {
+  padding: 20px;
+  margin: 0 auto;
+  border: $border;
+  border-radius: $border-radius;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
