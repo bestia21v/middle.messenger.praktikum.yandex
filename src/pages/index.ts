@@ -23,6 +23,7 @@ import {
   isValidEmail,
   isValidLogin, isValidMessage, isValidName, isValidPassword, isValidPhone,
 } from '../utils/validators';
+import AuthAPI from '../services/authAPI';
 
 const loginPage = new LoginPage({
   registration: new Link({
@@ -49,7 +50,7 @@ const loginPage = new LoginPage({
             login: loginValue,
             password: passwordValue,
           };
-          console.log(data);
+          AuthAPI.signUp(data);
         }
       },
     },

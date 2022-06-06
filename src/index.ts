@@ -1,8 +1,10 @@
 import './main.scss';
 import './partials/partials';
-import { render } from './utils/renderDOM';
-import { getPage } from './utils/simpleRouter';
+import { Router } from './router/router';
+import { loginPage } from './pages';
 
-const page = getPage();
+const router = new Router('#root');
 
-render('#root', page);
+router
+  .use('/', loginPage)
+  .start();

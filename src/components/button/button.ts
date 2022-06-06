@@ -1,14 +1,14 @@
 import button from 'bundle-text:./button.hbs';
 import { Block } from '../../abstract/block';
 import './button.scss';
-import { attributesType, eventsType } from '../../abstract/block/block';
+import { PropsExtended } from '../../abstract/block/block';
 
 export interface ButtonProps {
   text: string;
 }
 
-export class Button extends Block<ButtonProps & eventsType & attributesType> {
-  constructor(props: ButtonProps & eventsType & attributesType) {
+export class Button extends Block<PropsExtended<ButtonProps>> {
+  constructor(props: PropsExtended<ButtonProps>) {
     super(props, 'button');
   }
 

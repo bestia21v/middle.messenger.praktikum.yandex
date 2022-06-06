@@ -4,16 +4,16 @@ import { FieldProps } from '../../components/field/field';
 import { ButtonProps } from '../../components/button/button';
 import './form.scss';
 import { addDefaultClass } from '../../utils/props';
-import { attributesType, eventsType } from '../../abstract/block/block';
+import { AttributesType, EventsType } from '../../abstract/block/block';
 
 export interface FormProps {
-    fields: Block<FieldProps>[];
-    button?: Block<ButtonProps>;
-    customClass?: string;
+  fields: Block<FieldProps>[];
+  button?: Block<ButtonProps>;
+  customClass?: string;
 }
 
-export class Form extends Block<FormProps & eventsType & attributesType> {
-  constructor(props: FormProps & eventsType & attributesType) {
+export class Form extends Block<FormProps & EventsType & AttributesType> {
+  constructor(props: FormProps & EventsType & AttributesType) {
     const propsExtended = addDefaultClass(props, 'form');
     super(propsExtended, 'form');
   }

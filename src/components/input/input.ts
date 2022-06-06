@@ -1,13 +1,13 @@
 import { Block } from '../../abstract/block';
-import { attributesType, eventsType } from '../../abstract/block/block';
+import { AttributesType, EventsType } from '../../abstract/block/block';
 import { addDefaultClass } from '../../utils/props';
 
 export interface InputProps {
   value?: string;
 }
 
-export class Input extends Block<InputProps & eventsType & attributesType> {
-  constructor(props: InputProps & eventsType & attributesType) {
+export class Input extends Block<InputProps & EventsType & AttributesType> {
+  constructor(props: InputProps & EventsType & AttributesType) {
     const propsExtended = addDefaultClass(props, 'form__form-field-input');
     super(propsExtended, 'input');
   }
