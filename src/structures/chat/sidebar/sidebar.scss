@@ -5,6 +5,7 @@
   border-right: $border;
   overflow-y: scroll;
   &__title {
+    gap: 10px;
     padding-left: 10px;
     height: 75px;
     border-bottom: $border;

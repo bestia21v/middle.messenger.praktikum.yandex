@@ -1,15 +1,16 @@
-import { BlockEvents } from '../enums/enums';
+import { BlockEvents, StoreEvents } from '../enums/enums';
 
-export interface IEventBus {
-  on: (event: BlockEvents, callback: any) => void;
-  off: (event: BlockEvents, callback: any) => void;
-  emit: (event: BlockEvents, ...args: any) => void;
-}
-
+type EventBusEvents = BlockEvents | StoreEvents;
 type CallbackType = (...args: any) => void;
 type ListenersType = {
-  [key in BlockEvents]?: CallbackType[]
+  [key in EventBusEvents]?: CallbackType[]
 };
+
+export interface IEventBus {
+  on: (event: EventBusEvents, callback: any) => void;
+  off: (event: EventBusEvents, callback: any) => void;
+  emit: (event: EventBusEvents, ...args: any) => void;
+}
 
 export class EventBus implements IEventBus {
   listeners: ListenersType;
@@ -18,7 +19,7 @@ export class EventBus implements IEventBus {
     this.listeners = {};
   }
 
-  on(event: BlockEvents, callback: CallbackType) {
+  on(event: EventBusEvents, callback: CallbackType) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -26,7 +27,7 @@ export class EventBus implements IEventBus {
     this.listeners[event]?.push(callback);
   }
 
-  off(event: BlockEvents, callback: CallbackType) {
+  off(event: EventBusEvents, callback: CallbackType) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -36,7 +37,7 @@ export class EventBus implements IEventBus {
     );
   }
 
-  emit(event: BlockEvents, ...args: any) {
+  emit(event: EventBusEvents, ...args: any) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }

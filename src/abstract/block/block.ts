@@ -45,7 +45,7 @@ export class Block<T extends { [key: string]: any }> {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       const isValueBlockInstance = value instanceof Block;
       const isValueArrayOfBlockInstances = Array.isArray(value)
-          && value.every((v) => v instanceof Block) && value.length > 0;
+          && value.every((v) => v instanceof Block);
 
       const isBlockInstance = isValueBlockInstance || isValueArrayOfBlockInstances;
 
@@ -142,7 +142,10 @@ export class Block<T extends { [key: string]: any }> {
       return;
     }
 
-    Object.assign(this.props, nextProps);
+    const { children, props } = this._getChildren(nextProps);
+
+    Object.assign(this.props, props);
+    Object.assign(this.children, children);
   };
 
   get element() {
@@ -201,14 +204,13 @@ export class Block<T extends { [key: string]: any }> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set: (target, child, value) => {
-        // eslint-disable-next-line no-param-reassign
+        const targetCopy = { ...target };
         target[child.toString()] = value;
-        this.eventBus().emit(BlockEvents.FLOW_CDU, { ...target }, target);
+        this.eventBus().emit(BlockEvents.FLOW_CDU, targetCopy, { ...target });
 
         return true;
       },
       deleteProperty: (target, child) => {
-        // eslint-disable-next-line no-param-reassign
         delete target[child.toString()];
         return true;
       },

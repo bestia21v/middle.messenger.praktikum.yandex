@@ -4,8 +4,8 @@ import { LinkProps } from '../../components/link/link';
 import { FormProps } from '../../structures/form/form';
 
 interface Props {
-    login: Block<LinkProps>;
-    form: Block<FormProps>;
+  login: Block<LinkProps>;
+  form: Block<FormProps>;
 }
 
 export class RegistrationPage extends Block<Props> {

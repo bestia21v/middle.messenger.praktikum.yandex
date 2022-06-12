@@ -4,8 +4,8 @@ import { FormProps } from '../../structures/form/form';
 import { SubTitleProps } from '../../components/sub-title/sub-title';
 
 interface Props {
-    form: Block<FormProps>;
-    subTitle: Block<SubTitleProps>;
+  form: Block<FormProps>;
+  subTitle: Block<SubTitleProps>;
 }
 
 export class ChangePasswordPage extends Block<Props> {

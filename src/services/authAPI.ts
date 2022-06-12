@@ -1,14 +1,23 @@
+import { HTTPRequests, OptionsType } from './HTTPRequests';
 import { BaseAPI } from './baseAPI';
 
-class AuthAPI extends BaseAPI {
-  PREFIX = 'auth';
+const auth = new HTTPRequests('/auth');
 
-  signUp(data: any) {
-    console.log(data);
-    const dataJSON = JSON.stringify(data);
-    this.post('http://ya-praktikum.tech/api/v2/auth/signin', { data: dataJSON }).then((res) => {
-      console.log(res);
-    });
+class AuthAPI extends BaseAPI {
+  signIn(options: OptionsType): Promise<any> {
+    return auth.post('/signin', options);
+  }
+
+  signUp(options: OptionsType): Promise<any> {
+    return auth.post('/signup', options);
+  }
+
+  getProfile(options?: OptionsType): Promise<any> {
+    return auth.get('/user', options);
+  }
+
+  logout(options: OptionsType): Promise<any> {
+    return auth.post('/logout', options);
   }
 }
 

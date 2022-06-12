@@ -4,3 +4,7 @@ export enum BlockEvents {
   FLOW_CDU = 'flow:component-did-update',
   FLOW_RENDER = 'flow:render',
 }
+
+export enum StoreEvents {
+  Updated = 'updated',
+}

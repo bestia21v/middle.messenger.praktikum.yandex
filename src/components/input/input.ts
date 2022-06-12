@@ -14,11 +14,6 @@ export class Input extends Block<InputProps & EventsType & AttributesType> {
 
   componentDidUpdate(oldProps: any, newProps: any): boolean {
     this._element?.setAttribute('value', newProps.value);
-    // const newElem = document.createElement('input');
-    // newElem.setAttribute('value', newProps.value);
-    // this._element?.replaceWith(newElem);
-    // console.log(newProps.value);
-    // console.log(this._element.value);
     return oldProps.value !== newProps.value;
   }
 

@@ -1,3 +1,3 @@
-import { Message } from './message';
+import { SidebarMessage } from './message';
 
-export { Message };
+export { SidebarMessage };

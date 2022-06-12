@@ -1,8 +1,7 @@
 import { Route } from './route';
+import { ROOT_QUERY } from '../consts';
 
-export class Router {
-  private static __instance: Router;
-
+class Router {
   routes: Route[];
 
   history: History;
@@ -12,17 +11,10 @@ export class Router {
   _rootQuery: string;
 
   constructor(rootQuery: string) {
-    if (Router.__instance) {
-      // eslint-disable-next-line no-constructor-return
-      return Router.__instance;
-    }
-
     this.routes = [];
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
-
-    Router.__instance = this;
   }
 
   use(pathname: string, block: any) {
@@ -46,8 +38,13 @@ export class Router {
       this._currentRoute.leave();
     }
 
-    this._currentRoute = route;
-    route.render();
+    if (route === undefined) {
+      this._currentRoute = null;
+      this._onRoute('/404');
+    } else {
+      this._currentRoute = route;
+      route.render();
+    }
   }
 
   go(pathname: string) {
@@ -67,3 +64,5 @@ export class Router {
     return this.routes.find((route) => route.match(pathname)) as Route;
   }
 }
+
+export default new Router(ROOT_QUERY);

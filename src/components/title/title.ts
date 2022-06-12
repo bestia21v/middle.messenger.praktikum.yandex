@@ -3,8 +3,8 @@ import { Block } from '../../abstract/block';
 import './title.scss';
 
 export interface TitleProps {
-    title: string;
-    customClass?: string;
+  title: string;
+  customClass?: string;
 }
 
 export class Title extends Block<TitleProps> {
