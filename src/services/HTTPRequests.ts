@@ -1,3 +1,5 @@
+import { BASE } from '../consts';
+
 enum Methods {
   GET = 'GET',
   PUT = 'PUT',
@@ -18,12 +20,13 @@ export type OptionsType = {
 };
 
 export class HTTPRequests {
-  base = 'https://ya-praktikum.tech/api/v2';
+  base: string;
 
   prefix: string;
 
-  constructor(prefix: string) {
+  constructor(prefix: string, base?: string) {
     this.prefix = prefix;
+    this.base = base || BASE;
   }
 
   get = (url: string, options: OptionsType = {}) => {

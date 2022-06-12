@@ -1,4 +1,4 @@
-import title from 'bundle-text:./title.hbs';
+import { title } from './title.tmpl';
 import { Block } from '../../abstract/block';
 import './title.scss';
 
