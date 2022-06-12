@@ -36,5 +36,7 @@ $ npm run start
 
 [PULL REQUEST #2](https://github.com/bestia21v/middle.messenger.praktikum.yandex/pull/2)
 
+[PULL REQUEST #3](https://github.com/bestia21v/middle.messenger.praktikum.yandex/pull/3)
+
 ## Ссылка на Netlify
 [NETLIFY](https://stately-zuccutto-6139b6.netlify.app/)
