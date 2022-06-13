@@ -33,5 +33,6 @@ export function isEqual(a: any, b: any): boolean {
   const aKeys = Object.keys(a);
   const bKeys = Object.keys(b);
 
-  return aKeys.every((key) => isEqual(a[key], b[key])) && bKeys.every((key) => isEqual(a[key], b[key]));
+  return aKeys.every((key) => isEqual(a[key], b[key]))
+      && bKeys.every((key) => isEqual(a[key], b[key]));
 }

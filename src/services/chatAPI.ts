@@ -15,6 +15,10 @@ class ChatAPI extends BaseAPI {
   getChatToken(chatId: string, options: OptionsType): Promise<any> {
     return chat.post(`/token/${chatId}`, options);
   }
+
+  addUserToChat(options: OptionsType): Promise<any> {
+    return chat.put('/users', options);
+  }
 }
 
 export default new ChatAPI();

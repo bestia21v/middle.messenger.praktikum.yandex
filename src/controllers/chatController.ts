@@ -25,6 +25,10 @@ class ChatController {
     const { response } = result;
     store.set('token', response.token);
   }
+
+  async addUserToChat(options: OptionsType) {
+    await chatAPI.addUserToChat(options);
+  }
 }
 
 export default new ChatController();

@@ -65,10 +65,6 @@ export class HTTPRequests {
     xhr.withCredentials = true;
     xhr.responseType = 'json';
 
-    // if (withCredentials) {
-    //   xhr.withCredentials = true;
-    // }
-
     xhr.open(method, fullURL, true);
 
     if (headers !== undefined) {

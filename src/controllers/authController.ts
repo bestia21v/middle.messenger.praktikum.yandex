@@ -2,6 +2,7 @@ import authAPI from '../services/authAPI';
 import { router } from '../router';
 import store from '../utils/store';
 import { OptionsType } from '../services/HTTPRequests';
+import chatController from './chatController';
 
 class AuthController {
   async getProfile() {
@@ -11,7 +12,8 @@ class AuthController {
       switch (status) {
         case 200:
           store.set('user', response);
-          if (window.location.pathname === '') {
+          if (window.location.pathname === '/') {
+            await chatController.getChats({});
             router.go('/chat');
           }
           break;
