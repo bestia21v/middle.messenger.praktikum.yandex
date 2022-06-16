@@ -3,7 +3,7 @@ import { Block } from '../../abstract/block';
 import './avatar.scss';
 
 export interface AvatarProps {
-    src: string;
+  src: string;
 }
 
 export default class Avatar extends Block<AvatarProps> {

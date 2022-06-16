@@ -1,14 +1,14 @@
 import label from 'bundle-text:./label.hbs';
 import { Block } from '../../abstract/block';
-import { attributesType, eventsType } from '../../abstract/block/block';
+import { AttributesType, EventsType } from '../../abstract/block/block';
 import { addDefaultClass } from '../../utils/props';
 
 export interface LabelProps {
   text: string;
 }
 
-export class Label extends Block<LabelProps & eventsType & attributesType> {
-  constructor(props: LabelProps & eventsType & attributesType) {
+export class Label extends Block<LabelProps & EventsType & AttributesType> {
+  constructor(props: LabelProps & EventsType & AttributesType) {
     const propsExtended = addDefaultClass(props, 'form__form-field-label');
     super(propsExtended, 'div');
   }

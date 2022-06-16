@@ -1,24 +1,19 @@
 import { v4 as makeUUID } from 'uuid';
 import * as Handlebars from 'handlebars';
 import { EventBus } from '../../utils/event-bus';
+import { BlockEvents } from '../../enums/enums';
 
-export enum EVENTS {
-    INIT = 'init',
-    FLOW_CDM = 'flow:component-did-mount',
-    FLOW_CDU = 'flow:component-did-update',
-    FLOW_RENDER = 'flow:render'
-}
-export type eventsType = {events?: any};
-export type attributesType = {attributes?: {[key: string]: any}};
-type propsExtended<T> = T & eventsType & attributesType;
+export type EventsType = { events?: any };
+export type AttributesType = { attributes?: { [key: string]: any } };
+export type PropsExtended<T> = T & EventsType & AttributesType;
 
 // Нельзя создавать экземпляр данного класса
-export class Block<T extends {[key: string]: any}> {
+export class Block<T extends { [key: string]: any }> {
   _element: HTMLElement | null = null;
 
   _tagName: string;
 
-  props: propsExtended<T>;
+  props: PropsExtended<T>;
 
   children: any;
 
@@ -26,7 +21,7 @@ export class Block<T extends {[key: string]: any}> {
 
   eventBus: () => EventBus;
 
-  constructor(propsAndChildren: propsExtended<T>, tagName = 'div') {
+  constructor(propsAndChildren: PropsExtended<T>, tagName = 'div') {
     const eventBus = new EventBus();
 
     this._tagName = tagName;
@@ -40,7 +35,7 @@ export class Block<T extends {[key: string]: any}> {
 
     this.eventBus = () => eventBus;
     this._registerEvents(this.eventBus());
-    this.eventBus().emit(EVENTS.INIT);
+    this.eventBus().emit(BlockEvents.INIT);
   }
 
   _getChildren(propsAndChildren: any) {
@@ -50,7 +45,7 @@ export class Block<T extends {[key: string]: any}> {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       const isValueBlockInstance = value instanceof Block;
       const isValueArrayOfBlockInstances = Array.isArray(value)
-          && value.every((v) => v instanceof Block) && value.length > 0;
+          && value.every((v) => v instanceof Block);
 
       const isBlockInstance = isValueBlockInstance || isValueArrayOfBlockInstances;
 
@@ -102,10 +97,10 @@ export class Block<T extends {[key: string]: any}> {
   }
 
   _registerEvents(eventBus: EventBus) {
-    eventBus.on(EVENTS.INIT, this.init.bind(this));
-    eventBus.on(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.on(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.on(EVENTS.FLOW_RENDER, this._render.bind(this));
+    eventBus.on(BlockEvents.INIT, this.init.bind(this));
+    eventBus.on(BlockEvents.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.on(BlockEvents.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(BlockEvents.FLOW_RENDER, this._render.bind(this));
   }
 
   _createResources() {
@@ -114,7 +109,7 @@ export class Block<T extends {[key: string]: any}> {
 
   init() {
     this._createResources();
-    this.eventBus().emit(EVENTS.FLOW_RENDER);
+    this.eventBus().emit(BlockEvents.FLOW_RENDER);
   }
 
   _componentDidMount() {
@@ -126,14 +121,14 @@ export class Block<T extends {[key: string]: any}> {
   }
 
   dispatchComponentDidMount() {
-    this.eventBus().emit(EVENTS.FLOW_CDM);
+    this.eventBus().emit(BlockEvents.FLOW_CDM);
   }
 
   _componentDidUpdate(oldProps: any, newProps: any) {
     const isNeedReRender = this.componentDidUpdate(oldProps, newProps);
 
     if (isNeedReRender) {
-      this.eventBus().emit(EVENTS.FLOW_RENDER);
+      this.eventBus().emit(BlockEvents.FLOW_RENDER);
     }
   }
 
@@ -147,7 +142,10 @@ export class Block<T extends {[key: string]: any}> {
       return;
     }
 
-    Object.assign(this.props, nextProps);
+    const { children, props } = this._getChildren(nextProps);
+
+    Object.assign(this.props, props);
+    Object.assign(this.children, children);
   };
 
   get element() {
@@ -206,21 +204,20 @@ export class Block<T extends {[key: string]: any}> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set: (target, child, value) => {
-        // eslint-disable-next-line no-param-reassign
+        const targetCopy = { ...target };
         target[child.toString()] = value;
-        this.eventBus().emit(EVENTS.FLOW_CDU, { ...target }, target);
+        this.eventBus().emit(BlockEvents.FLOW_CDU, targetCopy, { ...target });
 
         return true;
       },
       deleteProperty: (target, child) => {
-        // eslint-disable-next-line no-param-reassign
         delete target[child.toString()];
         return true;
       },
     });
   }
 
-  _makePropsProxy(props: propsExtended<T>) {
+  _makePropsProxy(props: PropsExtended<T>) {
     const checkPrivate = (prop: string | symbol): boolean => prop.toString().indexOf('_') === 0;
     return new Proxy(props, {
       get: (target, prop) => {
@@ -234,8 +231,8 @@ export class Block<T extends {[key: string]: any}> {
         }
 
         // eslint-disable-next-line no-param-reassign
-        target[prop.toString() as keyof propsExtended<T>] = value;
-        this.eventBus().emit(EVENTS.FLOW_CDU, targetCopy, { ...target });
+        target[prop.toString() as keyof PropsExtended<T>] = value;
+        this.eventBus().emit(BlockEvents.FLOW_CDU, targetCopy, { ...target });
 
         return true;
       },

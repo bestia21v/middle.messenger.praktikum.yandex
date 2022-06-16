@@ -1,14 +1,14 @@
 import link from 'bundle-text:./link.hbs';
 import { Block } from '../../abstract/block';
 import './link.scss';
-import { attributesType, eventsType } from '../../abstract/block/block';
+import { AttributesType, EventsType } from '../../abstract/block/block';
 
 export interface LinkProps {
   text: string;
 }
 
-export class Link extends Block<LinkProps & eventsType & attributesType> {
-  constructor(props: LinkProps & eventsType & attributesType) {
+export class Link extends Block<LinkProps & EventsType & AttributesType> {
+  constructor(props: LinkProps & EventsType & AttributesType) {
     super(props, 'a');
   }
 

@@ -1,11 +1,11 @@
-//Импорт всех partials
-import './../src/components/sub-title';
-import './../src/components/title';
-import './../src/components/field';
-import './../src/components/image';
-import './../src/components/button';
-import './../src/components/logo';
-import './../src/components/link';
-import './../src/components/avatar';
+// Импорт всех partials
+import './components/sub-title';
+import './components/title';
+import './components/field';
+import './components/image';
+import './components/button';
+import './components/logo';
+import './components/link';
+import './components/avatar';
 
-import  './../src/structures/form';
+import './structures/form';

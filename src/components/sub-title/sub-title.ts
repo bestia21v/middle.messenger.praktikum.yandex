@@ -3,8 +3,8 @@ import { Block } from '../../abstract/block';
 import './sub-title.scss';
 
 export interface SubTitleProps {
-    subTitle: string;
-    customClass?: string;
+  subTitle: string;
+  customClass?: string;
 }
 
 export class SubTitle extends Block<SubTitleProps> {
