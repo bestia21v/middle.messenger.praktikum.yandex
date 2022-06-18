@@ -38,5 +38,10 @@ $ npm run start
 
 [PULL REQUEST #3](https://github.com/bestia21v/middle.messenger.praktikum.yandex/pull/3)
 
+[PULL REQUEST #4](https://github.com/bestia21v/middle.messenger.praktikum.yandex/pull/4)
+
 ## Ссылка на Netlify
 [NETLIFY](https://stately-zuccutto-6139b6.netlify.app/)
+
+## Ссылка на Heroku
+[HEROKU](https://new-test-app-01.herokuapp.com/)
