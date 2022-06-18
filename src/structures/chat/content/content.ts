@@ -1,4 +1,4 @@
-import content from 'bundle-text:./content.hbs';
+import { content } from './content.tmpl';
 import { Block } from '../../../abstract/block';
 import { AvatarProps } from '../../../components/avatar/avatar';
 import { Form, FormProps } from '../../form/form';
@@ -55,7 +55,7 @@ function mapUserToProps(state: any) {
     avatar: new Avatar({
       src: (user as any)?.avatar
         ? `${AVATAR_RESOURCE}/${(user as any).avatar}`
-        : '/static/no-image.jpg',
+        : './static/no-image.jpg',
       attributes: {
         class: 'avatar--small',
       },

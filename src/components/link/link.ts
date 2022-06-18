@@ -1,4 +1,4 @@
-import link from 'bundle-text:./link.hbs';
+import { link } from './link.tmpl';
 import { Block } from '../../abstract/block';
 import './link.scss';
 import { AttributesType, EventsType } from '../../abstract/block/block';

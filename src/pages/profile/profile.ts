@@ -1,4 +1,4 @@
-import page from 'bundle-text:./profile.hbs';
+import { profile } from './profile.tmpl';
 import { Block } from '../../abstract/block';
 import { Form, FormProps } from '../../structures/form/form';
 import { LinkProps } from '../../components/link/link';
@@ -21,7 +21,7 @@ interface Props {
 
 class ProfilePage extends Block<Props> {
   render() {
-    return this.compile(page, this.props);
+    return this.compile(profile, this.props);
   }
 }
 
@@ -31,7 +31,7 @@ function mapUserToProps(state: any) {
     avatar: new Avatar({
       src: user?.avatar
         ? `${AVATAR_RESOURCE}/${user.avatar}`
-        : '/static/no-image.jpg',
+        : './static/no-image.jpg',
     }),
     form: new Form({
       fields: [

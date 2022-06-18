@@ -1,4 +1,4 @@
-import page from 'bundle-text:./change-avatar.hbs';
+import { changeAvatar } from './change-avatar.tmpl';
 import { Block } from '../../abstract/block';
 import { Form, FormProps } from '../../structures/form/form';
 import { AvatarProps } from '../../components/avatar/avatar';
@@ -23,7 +23,7 @@ interface Props {
 
 class ChangeAvatarPage extends Block<Props> {
   render() {
-    return this.compile(page, this.props);
+    return this.compile(changeAvatar, this.props);
   }
 }
 
@@ -33,7 +33,7 @@ function mapUserToProps(state: Indexed) {
     avatar: new Avatar({
       src: (user as any)?.avatar
         ? `${AVATAR_RESOURCE}/${(user as any).avatar}`
-        : '/static/no-image.jpg',
+        : './static/no-image.jpg',
     }),
     form: new Form({
       events: {

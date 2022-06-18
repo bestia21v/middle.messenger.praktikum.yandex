@@ -1,4 +1,4 @@
-import sidebar from 'bundle-text:./sidebar.hbs';
+import { sidebar } from './sidebar.tmpl';
 import { Block } from '../../../abstract/block';
 import { SidebarMessage, SidebarMessageProps } from './message/message';
 import './sidebar.scss';
@@ -35,7 +35,7 @@ function mapChatToProps(state: any) {
       const message = new SidebarMessage({
         time: lastMessage?.time ? getTime(lastMessage.time) : '',
         avatar: new Avatar({
-          src: avatar || '/static/no-image.jpg',
+          src: avatar || './static/no-image.jpg',
           attributes: {
             class: 'avatar--small',
           },
