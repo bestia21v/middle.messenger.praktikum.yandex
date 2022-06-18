@@ -9,7 +9,9 @@
     "test": "jest",
     "dev-build": "webpack --mode=development",
     "dev-serve": "webpack serve --mode=development",
-    "prepare": "husky install"
+    "build": "webpack --mode=production",
+    "prepare": "husky install",
+    "start": "npm install && npm run build && node server.js"
   },
   "repository": {
     "type": "git",
