@@ -6,4 +6,4 @@ RUN apt-get -y install nodejs
 WORKDIR /var/www
 COPY . .
 EXPOSE 3000
-CMD npm install && npm run build && node server.js
+CMD npm start
