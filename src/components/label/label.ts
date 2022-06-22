@@ -1,4 +1,4 @@
-import label from 'bundle-text:./label.hbs';
+import { label } from './label.tmpl';
 import { Block } from '../../abstract/block';
 import { AttributesType, EventsType } from '../../abstract/block/block';
 import { addDefaultClass } from '../../utils/props';

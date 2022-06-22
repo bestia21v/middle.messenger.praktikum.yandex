@@ -10,6 +10,7 @@ import { Label } from '../../components/label';
 import { Button } from '../../components/button';
 import router from '../../router/router';
 import AuthAPI from '../../services/authAPI';
+import { Logo } from '../../components/logo';
 
 const registrationPage = new RegistrationPage({
   login: new Link({
@@ -176,6 +177,9 @@ const registrationPage = new RegistrationPage({
         class: 'button',
       },
     }),
+  }),
+  logo: new Logo({
+    src: './static/logo.jpg',
   }),
 });
 

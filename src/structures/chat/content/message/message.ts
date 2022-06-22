@@ -1,5 +1,5 @@
 import './message.scss';
-import message from 'bundle-text:./message.hbs';
+import { message } from './message.tmpl';
 import { Block } from '../../../../abstract/block';
 
 interface ContentMessageProps {

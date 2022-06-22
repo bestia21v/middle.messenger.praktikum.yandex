@@ -1,4 +1,4 @@
-import page from 'bundle-text:./chat.hbs';
+import { chat } from './chat.tmpl';
 import { Block } from '../../abstract/block';
 import './chat.scss';
 import { SidebarProps } from '../../structures/chat/sidebar/sidebar';
@@ -20,6 +20,6 @@ export class ChatPage extends Block<Props> {
   }
 
   render() {
-    return this.compile(page, this.props);
+    return this.compile(chat, this.props);
   }
 }

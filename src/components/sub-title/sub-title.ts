@@ -1,4 +1,4 @@
-import subTitle from 'bundle-text:./sub-title.hbs';
+import { subTitle } from './sub-title.tmpl';
 import { Block } from '../../abstract/block';
 import './sub-title.scss';
 

@@ -1,4 +1,4 @@
-import message from 'bundle-text:./message.hbs';
+import { message } from './message.tmpl';
 import { Block } from '../../../../abstract/block';
 import { AvatarProps } from '../../../../components/avatar/avatar';
 import './message.scss';

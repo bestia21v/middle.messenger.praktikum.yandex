@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html",
     "check": "tsc --noEmit",
     "eslint": "eslint src --ext .js,.ts, --fix",
     "stylelint": "stylelint **/*.scss",
     "test": "jest",
-    "start": "npm install && parcel build index.html && node server.js"
+    "dev-build": "webpack --mode=development",
+    "dev-serve": "webpack serve --mode=development",
+    "build": "webpack --mode=production",
+    "prepare": "husky install",
+    "start": "npm install && npm run build && node server.js",
+    "docker-build": "docker build -t messenger .",
+    "docker-run": "docker run --init -p 3000:3000 messenger"
   },
   "repository": {
     "type": "git",
@@ -23,37 +27,40 @@
   },
   "homepage": "https://github.com/bestia21v/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@parcel/transformer-inline-string": "^2.4.1",
-    "@parcel/transformer-sass": "^2.4.1",
-    "@parcel/transformer-typescript-tsc": "^2.5.0",
     "@types/jest": "^28.1.1",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "chai": "^4.3.6",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "handlebars-loader": "^1.7.2",
+    "husky": "^8.0.1",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
     "jest-handlebars": "^1.0.1",
     "mocha": "^10.0.0",
-    "parcel": "^2.4.1",
-    "parcel-reporter-static-files-copy": "^1.3.4",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
     "stylelint": "^14.8.2",
     "stylelint-config-recommended-scss": "^6.0.0",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-scss": "^4.2.0",
     "ts-jest": "^28.0.4",
-    "typescript": "^4.6.4"
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
   },
   "dependencies": {
     "express": "^4.17.3",
     "handlebars": "^4.7.7",
     "uuid": "^8.3.2"
-  },
-  "staticFiles": {
-    "distDir": "dist/static"
   }
 }

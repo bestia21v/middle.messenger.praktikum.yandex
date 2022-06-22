@@ -8,6 +8,7 @@ import { Input } from '../../components/input';
 import { Label } from '../../components/label';
 import { Button } from '../../components/button';
 import router from '../../router/router';
+import { Logo } from '../../components/logo';
 
 const loginPage = new LoginPage({
   registration: new Link({
@@ -93,6 +94,9 @@ const loginPage = new LoginPage({
         type: 'submit',
       },
     }),
+  }),
+  logo: new Logo({
+    src: './static/logo.jpg',
   }),
 });
 

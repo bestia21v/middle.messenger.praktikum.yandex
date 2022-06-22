@@ -12,7 +12,7 @@ import router from '../../router/router';
 
 const changeAvatarPage = new ChangeAvatarPage({
   subTitle: new SubTitle({ subTitle: 'Изменить аватар' }),
-  avatar: new Avatar({ src: '/static/no-image.jpg' }),
+  avatar: new Avatar({ src: './static/no-image.jpg' }),
   form: new Form({
     events: {
       submit(event: SubmitEvent) {

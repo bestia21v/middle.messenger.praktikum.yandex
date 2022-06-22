@@ -9,7 +9,7 @@ import router from '../../router/router';
 import authController from '../../controllers/authController';
 
 const profilePage = new ProfilePage({
-  avatar: new Avatar({ src: '/static/no-image.jpg' }),
+  avatar: new Avatar({ src: './static/no-image.jpg' }),
   form: new Form({
     fields: [
       new Field({

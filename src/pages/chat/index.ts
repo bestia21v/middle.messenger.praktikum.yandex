@@ -41,7 +41,7 @@ const chatPage = new ChatPage({
     chatId: '',
     chatMessages: [],
     avatar: new Avatar({
-      src: '/static/no-image.jpg',
+      src: './static/no-image.jpg',
       attributes: {
         class: 'avatar--small',
       },

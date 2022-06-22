@@ -3,9 +3,9 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [
-    "node_modules/(?!(uuid)/)"
+    'node_modules/(?!(uuid)/)',
   ],
   moduleNameMapper: {
-    "\\.(scss)$": "<rootDir>/src/utils/styleMock.ts"
-  }
+    '\\.(scss)$': '<rootDir>/src/utils/styleMock.ts',
+  },
 };

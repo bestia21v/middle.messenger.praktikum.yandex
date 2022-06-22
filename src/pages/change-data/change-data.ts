@@ -1,4 +1,4 @@
-import page from 'bundle-text:./change-data.hbs';
+import { changePassword } from './change-data.tmpl';
 import { Block } from '../../abstract/block';
 import { Form, FormProps } from '../../structures/form/form';
 import { SubTitleProps } from '../../components/sub-title/sub-title';
@@ -21,7 +21,7 @@ interface Props {
 
 class ChangeDataPage extends Block<Props> {
   render() {
-    return this.compile(page, this.props);
+    return this.compile(changePassword, this.props);
   }
 }
 

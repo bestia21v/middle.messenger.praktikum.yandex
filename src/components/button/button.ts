@@ -1,4 +1,4 @@
-import button from 'bundle-text:./button.hbs';
+import { button } from './button.tmpl';
 import { Block } from '../../abstract/block';
 import './button.scss';
 import { PropsExtended } from '../../abstract/block/block';

@@ -1,4 +1,4 @@
-import form from 'bundle-text:./form.hbs';
+import { form } from './form.tmpl';
 import { Block } from '../../abstract/block';
 import { FieldProps } from '../../components/field/field';
 import { ButtonProps } from '../../components/button/button';

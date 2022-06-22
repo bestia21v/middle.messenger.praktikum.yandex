@@ -1,4 +1,4 @@
-import field from 'bundle-text:./field.hbs';
+import { field } from './field.tmpl';
 import { Block } from '../../abstract/block';
 import { AttributesType, EventsType } from '../../abstract/block/block';
 import { addDefaultClass } from '../../utils/props';
